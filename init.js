@@ -164,7 +164,6 @@
         //
         //////////////////////////////////////////////////////////
         contextMenu: function(path) {
-            codiad.filemanager.contextMenuHide();
             var _this = this;
             $.get(this.path+"controller.php?action=getContent&path="+path, function(data){
                 var content = _this.beautifyContent(path, data);
