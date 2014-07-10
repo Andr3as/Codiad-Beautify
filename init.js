@@ -209,7 +209,7 @@
                 return js_beautify(content, settings);
             } else if (ext == "php") {
 				this.beautifyPhp.beautify(codiad.editor.getActive().getSession());
-				return false;
+				return true;
             } else {
                 return false;
             }
@@ -235,7 +235,7 @@
                     text = session.getTextRange(range);
                 }
                 text = _this.beautifyContent(path, text, settings);
-                if (text !== false) {
+                if (typeof(text) == 'string') {
 					session.replace(range, text);
                 }
             };
