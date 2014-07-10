@@ -9,7 +9,3 @@ Beautify js, json, html or css files.
 ##Hotkey
 
 - Ctrl-Alt-B Beautify current document/selection
-
-##Example
-
-![Example](http://andrano.de/Plugins/img/minimap.jpg "Example")
