@@ -11,6 +11,7 @@
     <input type="checkbox" id="beautify_json">Beautify JSON <br>
     <input type="checkbox" id="beautify_html">Beautify HTML <br>
     <input type="checkbox" id="beautify_css">Beautify CSS <br>
+    <input type="checkbox" id="beautify_php">Beautify PHP <br>
     <button onclick="codiad.Beautify.save(); return false;">Close</button>
     <script>
         codiad.Beautify.get();

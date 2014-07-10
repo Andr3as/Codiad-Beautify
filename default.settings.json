@@ -3,7 +3,8 @@
 		"js": false,
 		"json": false,
 		"html": false,
-		"css": false
+		"css": false,
+		"php": false
 	},
 	"beautify": {
 		"indent_size": 1,

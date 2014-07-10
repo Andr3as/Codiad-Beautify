@@ -19,10 +19,11 @@
     codiad.Beautify = {
         
         path: curpath,
+        beautifyPhp: null,
         settings: {
             js: false, json: false, html: false, css: false, auto: false
         },
-        files: ["html", "htm", "js", "json", "css"],
+        files: ["html", "htm", "js", "json", "css", "php"],
         
         init: function() {
             var _this = this;
@@ -30,6 +31,9 @@
             $.getScript(this.path+"libs/beautify-css.js");
             $.getScript(this.path+"libs/beautify-html.js");
             $.getScript(this.path+"libs/beautify.js");
+            $.getScript(this.path+"libs/ext-beautify.js", function() {
+				_this.beautifyPhp = ace.require("ace/ext/beautify");
+			});
             //Load settings
             this.load();
             //Set subscriptions
@@ -56,7 +60,7 @@
             });
             amplify.subscribe('context-menu.onShow', function(obj){
                 var ext = _this.getExtension(obj.path);
-                if (_this.files.indexOf(ext) != -1) {
+                if (_this.files.indexOf(ext) != -1 && ext !== "php") {
                     $('#context-menu').append('<hr class="file-only beautify">');
                     $('#context-menu').append('<a class="file-only beautify" onclick="codiad.Beautify.contextMenu($(\'#context-menu\').attr(\'data-path\'));"><span class="icon-brush"></span>Beautify</a>');
                 }
@@ -86,6 +90,7 @@
             this.checkSettings("json");
             this.checkSettings("html");
             this.checkSettings("css");
+            this.checkSettings("php");
             $.post(this.path+"controller.php?action=save", {settings: JSON.stringify(this.settings)}, function(data){
                 var json = JSON.parse(data);
                 if (json.status == "error") {
@@ -120,6 +125,7 @@
             this.setSettings("json");
             this.setSettings("html");
             this.setSettings("css");
+            this.setSettings("php");
         },
         
         //////////////////////////////////////////////////////////
@@ -201,8 +207,11 @@
                 return css_beautify(content, settings);
             } else if (ext == "js" || ext == "json") {
                 return js_beautify(content, settings);
+            } else if (ext == "php") {
+				this.beautifyPhp.beautify(codiad.editor.getActive().getSession());
+				return false;
             } else {
-                return content;
+                return false;
             }
         },
         
@@ -226,7 +235,9 @@
                     text = session.getTextRange(range);
                 }
                 text = _this.beautifyContent(path, text, settings);
-                session.replace(range, text);
+                if (text !== false) {
+					session.replace(range, text);
+                }
             };
             if (selText !== "") {
                 if (editor.selection.inMultiSelectMode) {
