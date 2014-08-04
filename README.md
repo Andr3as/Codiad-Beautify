@@ -1,6 +1,6 @@
 #Beautify
 
-Beautify js, json, html, css of php files.
+Beautify js, json, html, css or php files.
 
 ##Installation
 
