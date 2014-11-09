@@ -54,6 +54,9 @@
                     if (_this.check(path)) {
                         var content = codiad.editor.getContent();
                         content = _this.beautifyContent(path, content);
+                        if (typeof(content) !== 'string') {
+                            return true;
+                        }
                         codiad.editor.setContent(content);
                     }
                 }
