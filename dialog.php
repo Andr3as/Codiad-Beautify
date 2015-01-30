@@ -6,6 +6,7 @@
 -->
 <form id="beautify_form">
     <label>Beautify settings</label>
+    Hint: Ctrl-alt-b to beautify current selection<br>
     Enable autobeautify at save: <br>
     <input type="checkbox" id="beautify_js">Beautify JS <br>
     <input type="checkbox" id="beautify_json">Beautify JSON <br>
