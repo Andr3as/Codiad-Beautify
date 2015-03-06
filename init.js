@@ -71,6 +71,11 @@
             amplify.subscribe('context-menu.onHide', function(){
                 $('.beautify').remove();
             });
+            amplify.subscribe('settings.dialog.save', function(){
+                if ($('#beautify_form').length > 0) {
+                    codiad.Beautify.save();
+                }
+            });
         },
         
         //////////////////////////////////////////////////////////
@@ -103,7 +108,6 @@
                 }
                 _this.load();
             });
-            codiad.modal.unload();
         },
         
         //////////////////////////////////////////////////////////
