@@ -5,6 +5,8 @@ Beautify js, json, html, css or php files.
 ###Channellog
 
 - 0.4.0 New settings dialog -> see editor settings
+- 0.4.05 Quick fix for issue #1
+  - Correct update will follow after next library release
 
 ##Installation
 
