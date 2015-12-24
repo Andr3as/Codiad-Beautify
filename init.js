@@ -257,9 +257,21 @@
                     fn(range);
                 }
             } else {
+                var row     = codiad.editor.getActive().getCursorPosition().row;
                 var content = codiad.editor.getContent();
+                var lines   = (content.match(/\n/g) || []).length + 1;
                 range       = editor.selectAll() || editor.selection.getRange();
                 fn(range, content);
+                
+                //Guess cursor position
+                if (localStorage.getItem("codiad.plugin.beautify.guessCursorPosition") == "true") {
+                    content     = codiad.editor.getContent();
+                    var newLines= (content.match(/\n/g) || []).length + 1;
+                    var factor  = newLines / lines;
+                    var newRow  = Math.floor(factor * row);
+                    codiad.editor.getActive().clearSelection();
+                    codiad.editor.getActive().moveCursorToPosition({"row":newRow, "column":0});
+                }
             }
         },
         

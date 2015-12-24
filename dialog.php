@@ -4,6 +4,10 @@
     See http://opensource.org/licenses/MIT for more information.
     This information must remain intact.
 -->
+<?php
+    require_once('../../common.php');
+?>
+
 <form id="beautify_form">
     <label><span class="icon-brush big-icon"></span>Beautify Settings</label>
     <hr>
@@ -34,6 +38,23 @@
         <tr>
             <td>
                 <input type="checkbox" id="beautify_php">Beautify PHP
+            </td>
+        </tr>
+    </table>
+    
+    <hr>
+    
+    <h3>Experimental settings</h3>
+    <table class="settings">
+        <tr>
+            <td style="width: 80%;">
+                Guess cursor position
+            </td>
+            <td>
+                <select class="setting" data-setting="codiad.plugin.beautify.guessCursorPosition">
+                    <option value="true"><?php i18n("Yes"); ?></option>
+                    <option value="false" selected><?php i18n("No"); ?></option>
+                </select>
             </td>
         </tr>
     </table>
