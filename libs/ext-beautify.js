@@ -102,6 +102,30 @@ exports.spaces = [{
     value: 'function',
     append: true
 }, {
+    type: 'keyword',
+    value: 'new',
+    append: true
+}, {
+    type: 'keyword',
+    value: 'class',
+    append: true
+}, {
+    type: 'keyword',
+    value: 'public',
+    append: true
+}, {
+    type: 'keyword',
+    value: 'private',
+    append: true
+}, {
+    type: 'keyword',
+    value: 'protected',
+    append: true
+}, {
+    type: 'keyword',
+    value: 'global',
+    append: true
+}, {
     type: 'support.function',
     next: /[^\(]/,
     append: true
