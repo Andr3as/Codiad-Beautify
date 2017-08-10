@@ -1,13 +1,12 @@
+<?php
+    require_once('../../common.php');
+?>
 <!--
     Copyright (c) Codiad & Andr3as, distributed
     as-is and without warranty under the MIT License. 
     See http://opensource.org/licenses/MIT for more information.
     This information must remain intact.
 -->
-<?php
-    require_once('../../common.php');
-?>
-
 <form id="beautify_form">
     <label><span class="icon-brush big-icon"></span>Beautify Settings</label>
     <hr>
