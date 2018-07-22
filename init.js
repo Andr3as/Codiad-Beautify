@@ -40,6 +40,8 @@
             this.load();
             //Set subscriptions
             amplify.subscribe('active.onOpen', function(path){
+	    	if(codiad.editor.getActive() === null)
+			return;
                 var manager = codiad.editor.getActive().commands;
                 manager.addCommand({
                     name: "Beautify",
